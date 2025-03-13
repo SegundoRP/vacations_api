@@ -61,7 +61,7 @@ class SpreadsheetDataImport
     TimeOffRequest.create!(
       user_id: employee.id,
       request_type: sheet_file.row(row)[6] == "Incapacidad" ? "incapacity" : "vacation",
-      status: sheet_file.row(row)[9] == "Aprobado" ? "approved" : "rejected",
+      status: sheet_file.row(row)[8] == "Aprobado" ? "approved" : "rejected",
       start_date: sheet_file.row(row)[4],
       end_date: sheet_file.row(row)[5],
       reason: sheet_file.row(row)[7]

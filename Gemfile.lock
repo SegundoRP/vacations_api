@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/cerebris/jsonapi-resources.git
+  revision: e92afc690f5c53da6f4fa5e91ca72a50873390be
+  specs:
+    jsonapi-resources (0.11.0.beta1)
+      activerecord (>= 5.1)
+      concurrent-ruby
+      railties (>= 5.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -118,6 +127,18 @@ GEM
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
     json (2.10.1)
+    kaminari (1.2.2)
+      activesupport (>= 4.1.0)
+      kaminari-actionview (= 1.2.2)
+      kaminari-activerecord (= 1.2.2)
+      kaminari-core (= 1.2.2)
+    kaminari-actionview (1.2.2)
+      actionview
+      kaminari-core (= 1.2.2)
+    kaminari-activerecord (1.2.2)
+      activerecord
+      kaminari-core (= 1.2.2)
+    kaminari-core (1.2.2)
     language_server-protocol (3.17.0.4)
     lint_roller (1.1.0)
     logger (1.6.6)
@@ -216,6 +237,10 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
+    ransack (4.3.0)
+      activerecord (>= 6.1.5)
+      activesupport (>= 6.1.5)
+      i18n
     rbs (3.8.1)
       logger
     rdoc (6.12.0)
@@ -322,10 +347,13 @@ DEPENDENCIES
   debug
   devise_token_auth
   factory_bot
+  jsonapi-resources!
+  kaminari
   pg (~> 1.1)
   puma (>= 5.0)
   rack-cors
   rails (~> 7.2.2)
+  ransack
   roo
   rspec-rails
   rubocop

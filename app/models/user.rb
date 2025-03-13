@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   extend Devise::Models
   devise :database_authenticatable, :registerable
 
@@ -15,4 +15,11 @@ class User < ActiveRecord::Base
 
   enum :role, { normal: 0, admin: 1 }
   enum :position, { employee: 0, leader: 1, ceo: 2 }
+
+  def vacation_days_by_year(year)
+    time_off_requests
+      .where(request_type: "vacation", status: "approved")
+      .where("extract(year from start_date) = ?", year)
+      .sum("end_date - start_date + 1")
+  end
 end

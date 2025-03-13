@@ -31,6 +31,10 @@ class TimeOffRequest < ApplicationRecord
     end
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id start_date end_date request_type status reason user_id created_at updated_at]
+  end
+
   private
 
   def dates_changed?
