@@ -39,6 +39,7 @@ ActiveRecord::Schema[7.2].define(version: 2025_03_12_180023) do
     t.datetime "updated_at", null: false
     t.integer "role", default: 0, null: false
     t.bigint "leader_id"
+    t.integer "position", default: 0, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["leader_id"], name: "index_users_on_leader_id"
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true

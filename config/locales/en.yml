@@ -29,3 +29,29 @@
 
 en:
   hello: "Hello world"
+  time_off_requests:
+    title: Events
+    back: Back to events
+    create:
+      success: Event was successfully created
+      failure: Event could not be created
+    update:
+      success: Event was successfully updated
+      failure: Event could not be updated
+    destroy:
+      success: Event was successfully removed
+    show:
+      title: The weather for the day of the event is
+      destroy: Remove
+      edit: Edit
+    index:
+      new_event: "Create event"
+    new:
+      title: "Create new event"
+  activerecord:
+    models:
+      time_off_request: Time Off Request
+    attributes:
+      time_off_request:
+        overlapping_time_off_requests: There is already a time off request in this period for the user
+        end_date_must_be_after_or_equal_to_start_date: Must be after or equal to start date

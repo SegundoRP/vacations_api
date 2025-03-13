@@ -14,4 +14,5 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   enum :role, { normal: 0, admin: 1 }
+  enum :position, { employee: 0, leader: 1, ceo: 2 }
 end
