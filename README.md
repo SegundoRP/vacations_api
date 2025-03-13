@@ -12,15 +12,15 @@ This is a REST API built with Ruby on Rails to manage employee time-off requests
 
 1. Clone the repository:
 
-   ```bash
-   git@github.com:SegundoRP/vacations_api.git
-   cd vacations_api
+  ```bash
+    git@github.com:SegundoRP/vacations_api.git
+    cd vacations_api
   ```
 
 2. Install dependencies:
 
   ```bash
-  bundle install
+    bundle install
   ```
 3. Set up the database:
 
@@ -53,11 +53,9 @@ This is a REST API built with Ruby on Rails to manage employee time-off requests
 
 #### User Registration
 
-    Method: POST
-
-    URL: /auth
-
-    Body:
+    - Method: POST
+    - URL: /auth
+    - Body:
 
   ```bash
     {
@@ -70,11 +68,9 @@ This is a REST API built with Ruby on Rails to manage employee time-off requests
 
 #### User Login
 
-    Method: POST
-
-    URL: /auth/sign_in
-
-    Body:
+    - Method: POST
+    - URL: /auth/sign_in
+    - Body:
 
   ```bash
     {
@@ -85,11 +81,9 @@ This is a REST API built with Ruby on Rails to manage employee time-off requests
 
 #### User Registration
 
-    Method: POST
-
-    URL: /auth
-
-    Body:
+    - Method: POST
+    - URL: /auth
+    - Body:
 
   ```bash
     {
@@ -101,29 +95,23 @@ This is a REST API built with Ruby on Rails to manage employee time-off requests
   ```
 #### User Logout
 
-    Method: DELETE
-
-    URL: /auth/sign_out
-    
-    Headers:
-
-    - access-token
-    - client
-    - uid
+    - Method: DELETE
+    - URL: /auth/sign_out
+    - Headers:
+      - access-token
+      - client
+      - uid
 
 ### Time-Off Requests (TimeOffRequests)
 
 #### List Time-Off Requests
 
-    Method: GET
-
-    URL: /api/v1/time_off_requests
-
-    Headers:
-
-    - access-token
-    - client
-    - uid
+    - Method: GET
+    - URL: /api/v1/time_off_requests
+    - Headers:
+      - access-token
+      - client
+      - uid
 
     Optional Parameters:
 
@@ -134,35 +122,27 @@ This is a REST API built with Ruby on Rails to manage employee time-off requests
     - page: Page number for pagination.
     - per_page: Number of items per page.
 
-    Body:
-
 
   #### Get a Single Time-Off Request
 
-    Method: GET
-
-    URL: /api/v1/time_off_requests/:id
-
-    Headers:
-
-    - access-token
-    - client
-    - uid
+    - Method: GET
+    - URL: /api/v1/time_off_requests/:id
+    - Headers:
+      - access-token
+      - client
+      - uid
 
 
   #### Create a Time-Off Request
 
-    Method: POST
+    - Method: POST
+    - URL: /api/v1/time_off_requests
+    - Headers:
+      - access-token
+      - client
+      - uid
 
-    URL: /api/v1/time_off_requests
-
-    Headers:
-
-    - access-token
-    - client
-    - uid
-
-    Body:
+    - Body:
 
   ```bash
     {
@@ -180,17 +160,14 @@ This is a REST API built with Ruby on Rails to manage employee time-off requests
 
   #### Update a Time-Off Request
 
-    Method: PUT
+    - Method: PUT
+    - URL: /api/v1/time_off_requests/:id
+    - Headers:
+      - access-t`oken
+      - client
+      - uid`
 
-    URL: /api/v1/time_off_requests/:id
-
-    Headers:
-
-    - access-token
-    - client
-    - uid
-
-    Body:
+    - Body:
 
     ```bash
       {
@@ -203,35 +180,28 @@ This is a REST API built with Ruby on Rails to manage employee time-off requests
 
   #### Delete a Time-Off Request
 
-    Method: DELETE
-
-    URL: /api/v1/time_off_requests/:id
-
-    Headers:
-
-    - access-token
-    - client
-    - uid
+    - Method: DELETE
+    - URL: /api/v1/time_off_requests/:id
+    - Headers:
+      - access-token
+      - client
+      - uid
 
 ### Users (Users)
 
 #### Get Vacation Days by Year
 
-    Method: GET
+    - Method: GET
+    - URL: /api/v1/users/:id/vacation_days
+    - Parameters:
+      - year: The year for which to calculate vacation days.
 
-    URL: /api/v1/users/:id/vacation_days
+    - Headers:
+      - access-token
+      - client
+      - uid
 
-    Parameters:
-
-    - year: The year for which to calculate vacation days.
-
-    Headers:
-
-    - access-token
-    - client
-    - uid
-
-    Body:
+    - Body:
 
     ```bash
       {
