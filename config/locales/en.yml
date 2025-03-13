@@ -31,23 +31,6 @@ en:
   hello: "Hello world"
   time_off_requests:
     title: Time Off Requests
-    back: Back to events
-    create:
-      success: Event was successfully created
-      failure: Event could not be created
-    update:
-      success: Event was successfully updated
-      failure: Event could not be updated
-    destroy:
-      success: Event was successfully removed
-    show:
-      title: The weather for the day of the event is
-      destroy: Remove
-      edit: Edit
-    index:
-      new_event: "Create event"
-    new:
-      title: "Create new event"
     not_found: Time off request not found
   users:
     not_found: User not found
