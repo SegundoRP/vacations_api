@@ -29,6 +29,7 @@ gem "bootsnap", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 gem "rack-cors"
 gem "devise_token_auth"
+gem 'roo'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -40,5 +41,14 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
   gem "rspec-rails"
-  gem "factory_bot", "~> 6.4"
+  gem "factory_bot"
+  gem "ruby-lsp", require: false
+  gem "rubocop", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
+end
+
+group :test do
+  gem "shoulda-matchers", require: false
+  gem 'database_cleaner-active_record'
 end
