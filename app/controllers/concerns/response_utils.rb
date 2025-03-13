@@ -3,7 +3,7 @@ module ResponseUtils
 
   def validate_user_logged_in
     unless current_user
-      error_response_json('unauthorized', :unauthorized, 'You must be logged in to access this resource')
+      error_response_json('unauthorized', :unauthorized, I18n.t('users.unauthorized'))
     end
   end
 

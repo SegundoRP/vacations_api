@@ -14,13 +14,13 @@ class Api::V1::TimeOffRequestsController < ApplicationController
   end
 
   def show
-    render json: @time_off_request, status: :ok
+    render json: json_api_serialize_object(TimeOffRequestResource, @time_off_request), status: :ok
   end
 
   def create
     time_off_request = TimeOffRequest.new(time_off_request_params)
     if time_off_request.save
-      render json: json_api_serialize_object(TimeOffRequestResource, *time_off_request), status: :created
+      render json: json_api_serialize_object(TimeOffRequestResource, time_off_request), status: :created
     else
       error_response_json('validation_error', :bad_request, time_off_request.errors.full_messages)
     end
@@ -28,7 +28,7 @@ class Api::V1::TimeOffRequestsController < ApplicationController
 
   def update
     if @time_off_request.update(time_off_request_params)
-      render json: json_api_serialize_object(TimeOffRequestResource, *@time_off_request), status: :ok
+      render json: json_api_serialize_object(TimeOffRequestResource, @time_off_request), status: :ok
     else
       error_response_json('validation_error', :bad_request, @time_off_request.errors.full_messages)
     end
@@ -45,9 +45,9 @@ class Api::V1::TimeOffRequestsController < ApplicationController
   private
 
   def set_time_off_request
-    @time_off_request = TimeOffRequest.find_by(id: params[:id], user_id: current_user.id)
+    @time_off_request = TimeOffRequest.find_by(id: params[:id])
 
-    render json: { error: 'TimeOffRequest not found' }, status: :not_found if @time_off_request.blank?
+    render json: { error: I18n.t('time_off_requests.not_found') }, status: :not_found if @time_off_request.blank?
   end
 
   def time_off_request_params

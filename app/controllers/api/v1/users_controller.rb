@@ -16,6 +16,6 @@ class Api::V1::UsersController < ApplicationController
   def set_user
     @user = User.find_by(id: params[:id])
 
-    render json: { error: "User not found" }, status: :not_found if @user.blank?
+    render json: { error: I18n.t("users.not_found") }, status: :not_found if @user.blank?
   end
 end

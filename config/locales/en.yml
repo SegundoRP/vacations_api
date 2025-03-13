@@ -30,7 +30,7 @@
 en:
   hello: "Hello world"
   time_off_requests:
-    title: Events
+    title: Time Off Requests
     back: Back to events
     create:
       success: Event was successfully created
@@ -48,6 +48,10 @@ en:
       new_event: "Create event"
     new:
       title: "Create new event"
+    not_found: Time off request not found
+  users:
+    not_found: User not found
+    unauthorized: You must be logged in to access this resource
   activerecord:
     models:
       time_off_request: Time Off Request
