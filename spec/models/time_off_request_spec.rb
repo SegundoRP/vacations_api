@@ -42,7 +42,12 @@ RSpec.describe TimeOffRequest do
 
       it 'returns true' do
         overlapping_request
-        expect(TimeOffRequest.overlapping_time_off_requests?(user.id, Date.current, 2.days.from_now)).to be_truthy
+        expect(TimeOffRequest.overlapping_time_off_requests?(
+          user_id: user.id,
+          start_date: Date.current,
+          end_date: 2.days.from_now,
+          request_type: overlapping_request.request_type
+        )).to be_truthy
       end
     end
 
@@ -51,7 +56,12 @@ RSpec.describe TimeOffRequest do
 
       it 'returns false' do
         overlapping_request
-        expect(TimeOffRequest.overlapping_time_off_requests?(user.id, 4.days.from_now, 6.days.from_now)).to be_falsey
+        expect(TimeOffRequest.overlapping_time_off_requests?(
+          user_id: user.id,
+          start_date: 4.days.from_now,
+          end_date: 6.days.from_now,
+          request_type: overlapping_request.request_type
+        )).to be_falsey
       end
     end
   end
@@ -94,7 +104,7 @@ RSpec.describe TimeOffRequest do
       it 'is invalid' do
         overlapping_request.no_overlapping_time_off_requests
         expect(overlapping_request.errors[:base]).to include(
-          I18n.t('activerecord.attributes.time_off_request.overlapping_time_off_requests')
+          I18n.t('activerecord.attributes.time_off_request.overlapping_time_off_requests', user_name: user.name)
         )
       end
     end

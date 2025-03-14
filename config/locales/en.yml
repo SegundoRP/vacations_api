@@ -40,5 +40,5 @@ en:
       time_off_request: Time Off Request
     attributes:
       time_off_request:
-        overlapping_time_off_requests: There is already a time off request in this period for the user
+        overlapping_time_off_requests: There is already a time off request in this period for the user %{user_name}
         end_date_must_be_after_or_equal_to_start_date: Must be after or equal to start date

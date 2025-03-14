@@ -5,13 +5,14 @@ class TimeOffRequest < ApplicationRecord
   validates :reason, length: { maximum: 500 }
 
   validate :end_date_must_be_after_or_equal_to_start_date, if: -> { dates_changed? }
-  validate :no_overlapping_time_off_requests, if: -> { dates_changed? }
 
   enum :request_type, { vacation: 0, incapacity: 1 }
   enum :status, { pending: 0, approved: 1, rejected: 2 }
 
-  def self.overlapping_time_off_requests?(user_id, start_date, end_date)
-    where("(start_date, end_date) OVERLAPS (?, ?)", start_date, end_date).exists?(user_id: user_id, status: [:approved])
+  def self.overlapping_time_off_requests?(user_id:, start_date:, end_date:, request_type:)
+    where("(start_date, end_date) OVERLAPS (?, ?)", start_date, end_date).exists?(
+      user_id: user_id, status: [:approved], request_type: request_type
+    )
   end
 
   def end_date_must_be_after_or_equal_to_start_date
@@ -26,8 +27,15 @@ class TimeOffRequest < ApplicationRecord
   def no_overlapping_time_off_requests
     return if start_date.blank? || end_date.blank?
 
-    if TimeOffRequest.overlapping_time_off_requests?(user_id, start_date, end_date)
-      errors.add(:base, I18n.t('activerecord.attributes.time_off_request.overlapping_time_off_requests'))
+    if TimeOffRequest.overlapping_time_off_requests?(
+      user_id: user_id,
+      start_date: start_date,
+      end_date: end_date,
+      request_type: request_type
+    ) && status.eql?("approved")
+      errors.add(:base, I18n.t(
+        'activerecord.attributes.time_off_request.overlapping_time_off_requests', user_name: user.name)
+      )
     end
   end
 

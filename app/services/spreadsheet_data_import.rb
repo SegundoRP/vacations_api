@@ -8,7 +8,7 @@ class SpreadsheetDataImport
   def call
     sheet = Roo::Spreadsheet.open(spreadsheet_url, extension: :xlsx).sheet(0)
 
-    Rails.logger.info "Inicializando importación de datos..."
+    STDOUT.puts "Inicializando importación de datos..."
 
     ActiveRecord::Base.transaction do
       (2..sheet.last_row).each do |row|
@@ -19,7 +19,7 @@ class SpreadsheetDataImport
       end
     end
 
-    Rails.logger.info "Datos importados exitosamente."
+    STDOUT.puts "Datos importados exitosamente."
   end
 
   private
