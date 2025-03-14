@@ -4,6 +4,11 @@ class Api::V1::UsersController < ApplicationController
   before_action :validate_user_logged_in
   before_action :set_user, only: %i[vacation_days]
 
+  def index
+    users = User.all
+    render json: json_api_serialize_collection(UserResource, *users), status: :ok
+  end
+
   def vacation_days
     year = params[:year].to_i
     days = @user.vacation_days_by_year(year)

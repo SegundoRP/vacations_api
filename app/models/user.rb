@@ -22,4 +22,8 @@ class User < ApplicationRecord
       .where("extract(year from start_date) = ?", year)
       .sum("end_date - start_date + 1")
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[id name email position leader_id created_at updated_at]
+  end
 end

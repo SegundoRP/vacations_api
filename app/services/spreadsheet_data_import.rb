@@ -38,9 +38,9 @@ class SpreadsheetDataImport
 
   def create_leader(sheet_file, row)
     unless sheet_file.row(row)[3] == "CEO"
-      leader = User.find_or_create_by(name: sheet_file.row(row)[3])
       email = "test#{row}@test.com"
-      leader.update(position: 'leader', uid: email, email: email) if leader.present?
+      leader = User.create_with(position: 'leader', uid: email, email: email)
+        .find_or_create_by(name: sheet_file.row(row)[3])
       leader
     end
   end

@@ -43,6 +43,10 @@ class TimeOffRequest < ApplicationRecord
     %w[id start_date end_date request_type status reason user_id created_at updated_at]
   end
 
+  def self.ransackable_associations(auth_object = nil)
+    ["user"]
+  end
+
   private
 
   def dates_changed?

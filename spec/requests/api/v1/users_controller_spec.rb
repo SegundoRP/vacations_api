@@ -31,4 +31,32 @@ RSpec.describe Api::V1::UsersController do
       end
     end
   end
+
+  describe 'GET #index' do
+    context 'when the user is not logged in' do
+      it 'returns a 401 status' do
+        get api_v1_users_path
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+
+    context 'when the user is logged in' do
+      let(:user) { create(:user) }
+      let(:headers) { user.create_new_auth_token }
+
+      before do
+        sign_in user
+      end
+
+      it 'returns success status' do
+        get api_v1_users_path, headers: headers
+        expect(response).to be_successful
+      end
+
+      it 'returns all users' do
+        get api_v1_users_path, headers: headers
+        expect(response.body).to include(user.name)
+      end
+    end
+  end
 end

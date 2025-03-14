@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :time_off_requests, except: %i[new edit]
-      resources :users, only: [] do
+      resources :users, only: %i[index] do
         get :vacation_days, on: :member
       end
     end

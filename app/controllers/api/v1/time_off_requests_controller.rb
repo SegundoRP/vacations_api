@@ -5,10 +5,22 @@ class Api::V1::TimeOffRequestsController < ApplicationController
   before_action :set_time_off_request, only: %i[show update destroy]
 
   def index
-    @search = TimeOffRequest.includes(:user).order(start_date: :asc).ransack(params[:filters])
-    time_off_requests = @search.result.page(params[:page]).per(params[:per_page])
+    page = (params[:page] || 1).to_i
+    per_page = params[:per_page].to_i
+    per_page = per_page.positive? ? per_page : 1000
 
-    response_json = json_api_serialize_collection(TimeOffRequestResource, *time_off_requests)
+    @search = TimeOffRequest.includes(user: :leader).order(start_date: :asc).ransack(params[:filters])
+    time_off_requests = @search.result.page(page).per(per_page)
+
+    response_json = {
+      time_off_requests: json_api_serialize_collection(TimeOffRequestResource, *time_off_requests),
+      pagination: {
+        current_page: time_off_requests.current_page,
+        total_pages: time_off_requests.total_pages,
+        total_count: time_off_requests.total_count,
+        per_page: per_page,
+      },
+    }
 
     render json: response_json, status: :ok
   end
