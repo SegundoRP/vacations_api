@@ -4,7 +4,7 @@ This is a REST API built with Ruby on Rails to manage employee time-off requests
 
 The frontend repository for this API is [this](https://github.com/SegundoRP/vacation-manager-frontend).
 
-The URL in production for this API is [this](https://vacationsapi-production.up.railway.app/).
+The URL in production for this API is "https://vacationsapi-production.up.railway.app/".
 
 ## Requirements
 
