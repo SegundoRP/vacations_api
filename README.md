@@ -2,6 +2,10 @@
 
 This is a REST API built with Ruby on Rails to manage employee time-off requests (vacations and sick leaves). The API includes authentication, pagination, filters, and the ability to calculate the total vacation days an employee has taken per year.
 
+The frontend repository for this API is [this](https://github.com/SegundoRP/vacation-manager-frontend).
+
+The URL in production for this API is [this](https://vacationsapi-production.up.railway.app/).
+
 ## Requirements
 
 - Ruby 3.3.5
